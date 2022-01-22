@@ -1,0 +1,7 @@
+.app-content, .app-header {
+  padding: 0 1rem;
+}
+
+.app-header {
+  margin-bottom: 2rem;
+}
