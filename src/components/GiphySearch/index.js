@@ -7,8 +7,6 @@ export function GiphySearch() {
 	const [path, setLocation] = useLocation('');
 	const refQuery = useRef(null);
 
-	console.log(path);
-
 	const searchQuery = (event) => {
 		event.preventDefault();
 		setLocation(`/search/${query}`);

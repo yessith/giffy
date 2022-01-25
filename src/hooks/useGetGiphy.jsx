@@ -1,28 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { GiphyContext } from '../context/GiphyContext';
 import { fetchData } from '../utils/fetchData';
 
-export const useGetGiphy = (url) => {
-	const [results, setResults] = useState([]);
-	const [error, setError] = useState(null);
+export function useGetGiphy(query) {
 	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(null);
+	const { setGifs } = useContext(GiphyContext);
+	const apiKey = 'CCxSj2JLOz6Sfqn3czLBVK8kDmNRB1vf';
 
 	useEffect(() => {
-		if (!url) return;
-		const getData = async () => {
-			setLoading(true);
-			setError(null);
+		setLoading(true);
+		const searchGiphy = () => {
+			const trendingUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25&rating=g`;
+
+			const searchUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${query}&limit=25&offset=0&rating=g&lang=en`;
+
+			const apiUrl = !query ? trendingUrl : searchUrl;
 			try {
-				const data = await fetchData(url);
-				setResults([data]);
-				setLoading(false);
+				fetchData(apiUrl).then((gif) => {
+					const { data } = gif;
+					setGifs(data);
+					setLoading(false);
+				});
 			} catch (error) {
 				console.log('Ooops, error', error.message);
 				setError(error.message);
 			}
 		};
 
-		getData();
-	}, [url]);
+		searchGiphy();
+	}, [query]);
 
-	return { results, loading, error };
-};
+	return { loading, error };
+}
