@@ -1,23 +1,21 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { GiphyContext } from '../context/GiphyContext';
 import { fetchData } from '../utils/fetchData';
 import { API_KEY } from '../utils/settings';
 import { API_URL } from '../utils/settings';
 
-export function useGetGiphy(query) {
-	const { setGifs, setLoading, setError } = useContext(GiphyContext);
+export function useGetTrending() {
+	const [trending, setTrending] = useState([]);
+	const { setLoading, setError } = useContext(GiphyContext);
 
 	useEffect(() => {
 		setLoading(true);
 		const searchGiphy = () => {
-			const trendingUrl = `${API_URL}/gifs/trending?api_key=${API_KEY}&limit=25&rating=g`;
-			const resultSearchUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${query}&limit=25&offset=0&rating=g&lang=en`;
-
-			const apiUrl = !query ? trendingUrl : resultSearchUrl;
+			const apiUrl = `${API_URL}/trending/searches?api_key=${API_KEY}`;
 			try {
 				fetchData(apiUrl).then((gif) => {
 					const { data } = gif;
-					setGifs(data);
+					setTrending(data);
 					setLoading(false);
 				});
 			} catch (error) {
@@ -27,5 +25,6 @@ export function useGetGiphy(query) {
 		};
 
 		searchGiphy();
-	}, [query]);
+	}, []);
+	return { trending };
 }

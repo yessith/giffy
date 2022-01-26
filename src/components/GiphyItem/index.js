@@ -1,29 +1,30 @@
 import { useContext } from 'react';
-import { GiphyContext } from '../../context/GiphyContext';
+import { GiphyContext } from 'context/GiphyContext';
 import { Link } from 'wouter';
-import { useGetGiphy } from '../../hooks/useGetGiphy';
+import { useGetGiphy } from 'hooks/useGetGiphy';
 import './GiphyItem.css';
 
-export function GiphyItem({ query, onLoading }) {
-	const { gifs } = useContext(GiphyContext);
-	const { loading } = useGetGiphy(query);
+export function GiphyItem({ query, onLoading, onError }) {
+	const { gifs, loading, error } = useContext(GiphyContext);
+	useGetGiphy(query);
 	console.log('GiphyItem');
+
+	if (loading) return onLoading();
+	if (error) return onError();
 
 	return (
 		<>
-			{loading
-				? onLoading()
-				: gifs.map(({ id, images, title }) => {
-						const imageUrl = images.downsized_medium.url;
-						return (
-							<article className='gifItem' key={id}>
-								<Link to={`/gif/${id}`}>
-									<h3>{title}</h3>
-									<img src={imageUrl} alt={title} />
-								</Link>
-							</article>
-						);
-				  })}
+			{gifs.map(({ id, images, title }) => {
+				const { url } = images.downsized_medium;
+				return (
+					<article className='gifItem' key={id}>
+						<Link to={`/gif/${id}`}>
+							<h3>{title}</h3>
+							<img src={url} alt={title} />
+						</Link>
+					</article>
+				);
+			})}
 		</>
 	);
 }

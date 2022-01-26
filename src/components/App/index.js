@@ -1,5 +1,5 @@
 import { AppUi } from './AppUi';
-import { GiphyProvider } from '../../context/GiphyContext';
+import { GiphyProvider } from 'context/GiphyContext';
 
 export function App() {
 	return (
