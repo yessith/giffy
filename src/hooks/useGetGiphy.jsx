@@ -1,8 +1,8 @@
 import { useEffect, useContext } from 'react';
-import { GiphyContext } from '../context/GiphyContext';
-import { fetchData } from '../utils/fetchData';
-import { API_KEY } from '../utils/settings';
-import { API_URL } from '../utils/settings';
+import { GiphyContext } from 'context/GiphyContext';
+import { fetchData } from 'utils/fetchData';
+import { API_KEY } from 'utils/settings';
+import { API_URL } from 'utils/settings';
 
 export function useGetGiphy(query) {
 	const { setGifs, setLoading, setError } = useContext(GiphyContext);

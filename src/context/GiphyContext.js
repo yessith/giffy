@@ -1,5 +1,5 @@
 import React from 'react';
-import { useInitialState } from '../hooks/useInitialState';
+import { useInitialState } from 'hooks/useInitialState';
 
 const GiphyContext = React.createContext();
 

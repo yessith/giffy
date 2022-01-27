@@ -1,11 +1,11 @@
 import { Route } from 'wouter';
 
 // COMPONENTS
-import { Header } from '../Header';
-import { GiphySearch } from '../GiphySearch';
-import { GiphyMenu } from '../GiphyMenu';
-import { Footer } from '../Footer';
-import { Category } from 'components/Category';
+import { Header } from 'components/Header';
+import { GiphySearch } from 'components/GiphySearch';
+import { GiphyMenu } from 'components/GiphyMenu';
+import { Footer } from 'components/Footer';
+// import { Category } from 'components/Category';
 import { LazyTrending } from 'components/LazyTrending';
 
 // PAGES
@@ -32,7 +32,8 @@ export function AppUi() {
 			<Route component={GiphyDetails} path='/gif/:id' />
 
 			<Footer>
-				<LazyTrending onShowComponent={() => <Category />} />
+				<LazyTrending />
+				{/* <LazyTrending onShowComponent={() => <Category />} /> */}
 			</Footer>
 		</>
 	);

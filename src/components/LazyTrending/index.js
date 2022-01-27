@@ -1,21 +1,16 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense } from 'react';
+import { useNearScreen } from 'hooks/useNearScreen';
+// import { Category } from 'components/Category';
 
-export function LazyTrending({ onShowComponent }) {
-	const [show, setShow] = useState(false);
+export function LazyTrending() {
+	const { isNearScreen, fromRef } = useNearScreen();
+	const Category = lazy(() => import('components/Category'));
 
-	useEffect(() => {
-		const onIntersection = (entries) => {
-			const element = entries[0];
-			if (element.isIntersecting) setShow(true);
-			console.log(element);
-		};
-
-		const observer = new IntersectionObserver(onIntersection, {
-			rootMargin: '100px',
-		});
-
-		observer.observe(document.getElementById('lazyTrending'));
-	}, []);
-
-	return <div id='lazyTrending'>{show ? onShowComponent() : null}</div>;
+	return (
+		<Suspense fallback={<p>cargando...</p>}>
+			<div ref={fromRef}>{isNearScreen ? <Category /> : null}</div>;
+		</Suspense>
+	);
 }
+
+// return <div ref={fromRef}>{isNearScreen ? onShowComponent() : null}</div>;

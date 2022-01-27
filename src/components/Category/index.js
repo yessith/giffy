@@ -1,13 +1,13 @@
 import { Link } from 'wouter';
-import { useGetTrending } from 'hooks/useGetTrending';
+import { useGetTrendingTerms } from 'hooks/useGetTrendingTerms';
 import './Category.css';
 
-export function Category() {
-	const { trending } = useGetTrending();
+function Category() {
+	const { trends } = useGetTrendingTerms();
 
 	return (
 		<ul className='trending-list'>
-			{trending.map((item) => (
+			{trends.map((item) => (
 				<li className='trending-item' key={item}>
 					<Link to={`/search/${item}`}>{item}</Link>
 				</li>
@@ -15,3 +15,4 @@ export function Category() {
 		</ul>
 	);
 }
+export { Category as default };
