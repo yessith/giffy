@@ -5,8 +5,8 @@ import { useGetGiphy } from 'hooks/useGetGiphy';
 import './GiphyItem.css';
 
 export function GiphyItem({ query, onLoading, onError }) {
-	const { gifs, loading, error } = useContext(GiphyContext);
-	useGetGiphy(query);
+	const { loading, error } = useContext(GiphyContext);
+	const { gifs } = useGetGiphy({ query });
 	console.log('GiphyItem');
 
 	if (loading) return onLoading();

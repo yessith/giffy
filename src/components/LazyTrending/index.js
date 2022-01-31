@@ -8,7 +8,7 @@ export function LazyTrending() {
 
 	return (
 		<Suspense fallback={<p>cargando...</p>}>
-			<div ref={fromRef}>{isNearScreen ? <Category /> : null}</div>;
+			<div ref={fromRef}>{isNearScreen ? <Category /> : null}</div>
 		</Suspense>
 	);
 }

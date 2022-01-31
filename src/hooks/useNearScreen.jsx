@@ -7,7 +7,6 @@ export function useNearScreen({ distance = '100px' } = {}) {
 	useEffect(() => {
 		const onIntersection = (entry, observer) => {
 			const element = entry[0];
-			console.log(element.target);
 			if (element.isIntersecting) {
 				setIsNearScreen(true);
 				// observer.disconnect();

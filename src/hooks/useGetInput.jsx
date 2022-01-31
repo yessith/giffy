@@ -5,7 +5,6 @@ export function useGetInput() {
 	const [query, setQuery] = useState('');
 	const [path, setLocation] = useLocation('');
 	const inputRef = useRef('');
-
 	const onSubmitQuery = (event) => {
 		event.preventDefault();
 		setLocation(`/search/${query}`);
