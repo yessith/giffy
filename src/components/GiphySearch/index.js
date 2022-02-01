@@ -6,6 +6,7 @@ export function GiphySearch() {
 
 	return (
 		<form onSubmit={onSubmitQuery} className='giphySearch'>
+			<button className='giphySearch-btn'>Search</button>
 			<input
 				onChange={onGetQuery}
 				className='giphySearch-input'

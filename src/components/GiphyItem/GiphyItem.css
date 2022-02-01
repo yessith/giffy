@@ -1,5 +1,15 @@
 .gifItem {
   position: relative;
+  height: 100%;
+}
+
+.gifItem a {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  display: block;
+  text-decoration: none;
 }
 
 .gifItem h3 {
@@ -17,15 +27,9 @@
 }
 
 .gifItem img {
+  height: inherit;
+  /* object-fit: cover; */
   width: 100%;
-  height: 100%;
+  vertical-align: top;
   border-radius: 0.5rem;
-}
-
-.gifItem a {
-  height: 100%;
-  width: 100%;
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
 }

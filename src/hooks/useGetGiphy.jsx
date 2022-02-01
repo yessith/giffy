@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { GiphyContext } from 'context/GiphyContext';
 
 // UTILS
@@ -6,8 +6,9 @@ import { API_KEY } from 'utils/settings';
 import { API_URL } from 'utils/settings';
 
 export function useGetGiphy({ limit = 25, query }) {
-	const { gifs, page, setGifs, setLoading, setError } =
-		useContext(GiphyContext);
+	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const { gifs, page, INITIAL_PAGE, setGifs } = useContext(GiphyContext);
 
 	const trendingUrl = `${API_URL}/gifs/trending?api_key=${API_KEY}&limit=${limit}&offset=${
 		page * limit
@@ -37,7 +38,7 @@ export function useGetGiphy({ limit = 25, query }) {
 	}, [query]);
 
 	useEffect(() => {
-		if (page === 0) return;
+		if (page === INITIAL_PAGE) return;
 		setLoading(true);
 		const searchGiphy = async () => {
 			try {
@@ -55,5 +56,5 @@ export function useGetGiphy({ limit = 25, query }) {
 		searchGiphy();
 	}, [page]);
 
-	return { gifs };
+	return { gifs, loading, error };
 }

@@ -1,12 +1,9 @@
-import { useContext } from 'react';
-import { GiphyContext } from 'context/GiphyContext';
 import { Link } from 'wouter';
 import { useGetGiphy } from 'hooks/useGetGiphy';
 import './GiphyItem.css';
 
 export function GiphyItem({ query, onLoading, onError }) {
-	const { loading, error } = useContext(GiphyContext);
-	const { gifs } = useGetGiphy({ query });
+	const { gifs, loading, error } = useGetGiphy({ query });
 	console.log('GiphyItem');
 
 	if (loading) return onLoading();

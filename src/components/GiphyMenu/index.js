@@ -1,12 +1,16 @@
 import { Link } from 'wouter';
+import './GiphyMenu.css';
 
 export function GiphyMenu() {
 	return (
-		<nav>
+		<nav className='app-menu'>
 			<Link to='/'>
-				<h1>Giffy</h1>
+				<img className='app-logo' src='/logo.png' alt='Logo Giphy' />
 			</Link>
-			<Link to='/search/matrix'>Gifs De Matrix</Link>
+			<ul className='app-login'>
+				<li className='app-login-item'>Login</li>
+				<li className='app-login-item'>register</li>
+			</ul>
 		</nav>
 	);
 }

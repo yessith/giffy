@@ -2,7 +2,9 @@ import { useEffect, useContext, useState } from 'react';
 import { GiphyContext } from 'context/GiphyContext';
 
 export function GiphyDetailsUi(gifId) {
-	const { gifs, setLoading, setError } = useContext(GiphyContext);
+	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const { gifs } = useContext(GiphyContext);
 
 	const singleGif = gifs.find(({ id }) => id === gifId);
 	const [gif, setGif] = useState(singleGif);
@@ -25,5 +27,5 @@ export function GiphyDetailsUi(gifId) {
 		}
 	}, [gifId]);
 
-	return { gif };
+	return { gif, loading, error };
 }

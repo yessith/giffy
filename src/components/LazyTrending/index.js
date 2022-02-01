@@ -7,9 +7,12 @@ export function LazyTrending() {
 	const Category = lazy(() => import('components/Category'));
 
 	return (
-		<Suspense fallback={<p>cargando...</p>}>
-			<div ref={fromRef}>{isNearScreen ? <Category /> : null}</div>
-		</Suspense>
+		<section className='trending-tags' ref={fromRef}>
+			<h2>Current Trending Tags</h2>
+			<Suspense fallback={<p>cargando...</p>}>
+				{isNearScreen ? <Category /> : null}
+			</Suspense>
+		</section>
 	);
 }
 

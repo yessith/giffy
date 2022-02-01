@@ -1,18 +1,18 @@
-import { useEffect, useContext } from 'react';
-import { GiphyContext } from 'context/GiphyContext';
+import { useEffect, useState } from 'react';
 
 export function useFetchData({ apiUrl }) {
-	const { gifs, setGifs, setLoading, setError } = useContext(GiphyContext);
+	const [data, setData] = useState([]);
+	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		setLoading(true);
-		const searchGiphy = async () => {
+		const fetchData = async () => {
 			try {
 				const response = await fetch(apiUrl);
-				const gif = await response.json();
-				const { data } = gif;
-				console.log(data);
-				setGifs(data);
+				const results = await response.json();
+				const { data } = results;
+				setData(data);
 				setLoading(false);
 			} catch (error) {
 				console.log('Ooops, error', error.message);
@@ -20,8 +20,8 @@ export function useFetchData({ apiUrl }) {
 			}
 		};
 
-		searchGiphy();
+		fetchData();
 	}, [apiUrl]);
 
-	return { gifs };
+	return { data, loading, error };
 }

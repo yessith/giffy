@@ -1,0 +1,29 @@
+.app-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-logo {
+  width: 100px;
+}
+
+.app-login {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+
+@media only screen and (min-width:500px) {
+  .app-login {
+    width: 25%;
+  }
+}
+
+@media only screen and (min-width:700px) {
+  .app-login {
+    width: 20%;
+  }
+}
