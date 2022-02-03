@@ -3,7 +3,7 @@ import { fetchData } from 'utils/fetchData';
 import { API_KEY } from 'utils/settings';
 import { API_URL } from 'utils/settings';
 
-export function useGetTrendingTerms() {
+export function useGetTrendingTags() {
 	const [trends, setTrends] = useState([]);
 
 	useEffect(() => {

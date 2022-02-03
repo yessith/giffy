@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
-import { useNearScreen } from 'hooks/useNearScreen';
+import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
 // import { Category } from 'components/Category';
 
 export function LazyTrending() {
-	const { isNearScreen, fromRef } = useNearScreen();
+	const { isNearScreen, fromRef } = useIntersectionObserver();
 	const Category = lazy(() => import('components/Category'));
 
 	return (

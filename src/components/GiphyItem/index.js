@@ -1,13 +1,15 @@
+import { useContext } from 'react';
 import { Link } from 'wouter';
-import { useGetGiphy } from 'hooks/useGetGiphy';
+import { GiphyContext } from 'context/GiphyContext';
+// import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
+// import { useLazyImages } from 'hooks/useLazyImages';
+
 import './GiphyItem.css';
 
-export function GiphyItem({ query, onLoading, onError }) {
-	const { gifs, loading, error } = useGetGiphy({ query });
+export function GiphyItem() {
+	const { gifs } = useContext(GiphyContext);
+	// const { fromRef } = useLazyImages();
 	console.log('GiphyItem');
-
-	if (loading) return onLoading();
-	if (error) return onError();
 
 	return (
 		<>
@@ -17,7 +19,9 @@ export function GiphyItem({ query, onLoading, onError }) {
 					<article className='gifItem' key={id}>
 						<Link to={`/gif/${id}`}>
 							<h3>{title}</h3>
-							<img src={url} alt={title} />
+							<figure className='gifImage'>
+								<img src={url} alt={title} data-src={url} loading='lazy' />
+							</figure>
 						</Link>
 					</article>
 				);

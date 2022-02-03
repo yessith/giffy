@@ -1,22 +1,38 @@
-import { useContext } from 'react';
-import { GiphyContext } from 'context/GiphyContext';
+import { useEffect } from 'react';
+import { GiphyListUi } from './GiphyListUi';
+import { useGetGiphy } from 'hooks/useGetGiphy';
 import { useGetLocation } from 'hooks/useGetLocation ';
+import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
 import './GiphyList.css';
 
-export function GiphyList({ children }) {
+export function GiphyList({ onLoading, onError, query, children }) {
+	const { HandleNextPage, externalRef } = GiphyListUi();
+	const { loading, error } = useGetGiphy({ query });
 	const { currentLocation } = useGetLocation();
-	const { setPage } = useContext(GiphyContext);
 	const path = currentLocation();
 
-	const handleNextPage = () => {
-		setPage((prevPage) => prevPage + 1);
-	};
+	const { isNearScreen } = useIntersectionObserver({
+		externalRef: loading ? null : externalRef,
+		once: false,
+	});
+
+	useEffect(() => {
+		if (isNearScreen) HandleNextPage();
+	}, [HandleNextPage, isNearScreen]);
+
+	if (loading) return onLoading();
+	if (error) return onError();
+	console.log('GiphyList');
 
 	return (
-		<main className='app-content'>
-			<h1>{path === '/' ? `Today's trending list` : `Results for ${path} `}</h1>
+		<>
+			<h1>
+				{path === '/'
+					? `Today's trending list`
+					: `Results for ${decodeURI(path)} `}
+			</h1>
 			<section className='listGif'>{children()}</section>
-			<button onClick={handleNextPage}>Load more Giff</button>
-		</main>
+			<div ref={externalRef}>ref</div>
+		</>
 	);
 }

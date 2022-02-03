@@ -1,9 +1,9 @@
 import { Link } from 'wouter';
-import { useGetTrendingTerms } from 'hooks/useGetTrendingTerms';
+import { useGetTrendingTags } from 'hooks/useGetTrendingTags';
 import './Category.css';
 
 function Category() {
-	const { trends } = useGetTrendingTerms();
+	const { trends } = useGetTrendingTags();
 
 	return (
 		<ul className='trending-list'>

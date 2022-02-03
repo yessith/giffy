@@ -32,14 +32,12 @@ export function AppUi() {
 			<Route path='/search/:query'>
 				{({ query }) => (
 					<GiphyResults>
-						<GiphyList>
-							{() => (
-								<GiphyItem
-									query={query}
-									onLoading={() => <Loading />}
-									onError={() => <Error />}
-								/>
-							)}
+						<GiphyList
+							onLoading={() => <Loading />}
+							onError={() => <Error />}
+							query={query}
+						>
+							{() => <GiphyItem />}
 						</GiphyList>
 					</GiphyResults>
 				)}

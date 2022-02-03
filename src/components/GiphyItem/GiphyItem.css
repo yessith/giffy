@@ -26,7 +26,11 @@
   border-bottom-right-radius: 0.5rem;
 }
 
-.gifItem img {
+.gifImage {
+  height: inherit;
+}
+
+.gifImage img {
   height: inherit;
   /* object-fit: cover; */
   width: 100%;

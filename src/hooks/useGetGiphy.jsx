@@ -5,10 +5,10 @@ import { GiphyContext } from 'context/GiphyContext';
 import { API_KEY } from 'utils/settings';
 import { API_URL } from 'utils/settings';
 
-export function useGetGiphy({ limit = 25, query }) {
+export function useGetGiphy({ limit = 10, query }) {
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
-	const { gifs, page, INITIAL_PAGE, setGifs } = useContext(GiphyContext);
+	const { page, INITIAL_PAGE, setGifs } = useContext(GiphyContext);
 
 	const trendingUrl = `${API_URL}/gifs/trending?api_key=${API_KEY}&limit=${limit}&offset=${
 		page * limit
@@ -56,5 +56,5 @@ export function useGetGiphy({ limit = 25, query }) {
 		searchGiphy();
 	}, [page]);
 
-	return { gifs, loading, error };
+	return { loading, error };
 }
