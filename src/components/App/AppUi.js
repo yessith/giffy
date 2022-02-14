@@ -4,12 +4,11 @@ import { Route } from 'wouter';
 import { Header } from 'components/Header';
 import { GiphySearch } from 'components/GiphySearch';
 import { GiphyMenu } from 'components/GiphyMenu';
-import { GiphyList } from 'components/GiphyList';
-import { GiphyItem } from 'components/GiphyItem';
+import GiphyList from 'components/GiphyList';
+import GiphyItem from 'components/GiphyItem';
 import { Footer } from 'components/Footer';
 import { Loading } from 'components/Loading';
 import { Error } from 'components/Error';
-// import { Category } from 'components/Category';
 import { LazyTrending } from 'components/LazyTrending';
 
 // PAGES
@@ -47,7 +46,6 @@ export function AppUi() {
 
 			<Footer>
 				<LazyTrending />
-				{/* <LazyTrending onShowComponent={() => <Category />} /> */}
 			</Footer>
 		</>
 	);

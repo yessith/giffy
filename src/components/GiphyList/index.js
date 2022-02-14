@@ -1,24 +1,11 @@
-import { useEffect } from 'react';
+import React from 'react';
+
 import { GiphyListUi } from './GiphyListUi';
-import { useGetGiphy } from 'hooks/useGetGiphy';
-import { useGetLocation } from 'hooks/useGetLocation ';
-import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
+
 import './GiphyList.css';
 
-export function GiphyList({ onLoading, onError, query, children }) {
-	const { HandleNextPage, externalRef } = GiphyListUi();
-	const { loading, error } = useGetGiphy({ query });
-	const { currentLocation } = useGetLocation();
-	const path = currentLocation();
-
-	const { isNearScreen } = useIntersectionObserver({
-		externalRef: loading ? null : externalRef,
-		once: false,
-	});
-
-	useEffect(() => {
-		if (isNearScreen) HandleNextPage();
-	}, [HandleNextPage, isNearScreen]);
+function GiphyList({ onLoading, onError, query, children }) {
+	const { path, externalRef, loading, error } = GiphyListUi(query);
 
 	if (loading) return onLoading();
 	if (error) return onError();
@@ -36,3 +23,5 @@ export function GiphyList({ onLoading, onError, query, children }) {
 		</>
 	);
 }
+
+export default React.memo(GiphyList);

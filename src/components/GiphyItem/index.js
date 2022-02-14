@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useContext } from 'react';
 import { Link } from 'wouter';
 import { GiphyContext } from 'context/GiphyContext';
@@ -6,7 +8,7 @@ import { GiphyContext } from 'context/GiphyContext';
 
 import './GiphyItem.css';
 
-export function GiphyItem() {
+function GiphyItem() {
 	const { gifs } = useContext(GiphyContext);
 	// const { fromRef } = useLazyImages();
 	console.log('GiphyItem');
@@ -29,3 +31,5 @@ export function GiphyItem() {
 		</>
 	);
 }
+
+export default React.memo(GiphyItem);

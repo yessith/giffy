@@ -5,6 +5,7 @@ const GiphyContext = React.createContext();
 
 const GiphyProvider = ({ children }) => {
 	const initialState = useInitialState();
+
 	return (
 		<GiphyContext.Provider value={initialState}>
 			{children}
