@@ -1,12 +1,10 @@
-import { GiphyDetailsUi } from './GiphyDetailsUi';
 import { Loading } from 'components/Loading';
 import { Error } from 'components/Error';
+import { useGetSingleGiphy } from 'hooks/useGetSingleGiphy';
 
 export function GiphyDetails({ params }) {
-	const gifId = params.id;
-	const { gif, loading, error } = GiphyDetailsUi(gifId);
-	const { images, title } = gif;
-	const { url } = images.downsized_medium;
+	const { gif, loading, error } = useGetSingleGiphy({ gifId: params.id });
+	const { title, url } = gif;
 
 	if (loading) return <Loading />;
 	if (error) return <Error />;
@@ -14,7 +12,7 @@ export function GiphyDetails({ params }) {
 	return (
 		<article className='gifItem'>
 			<h3>{title}</h3>
-			<img src={url} alt={title} />
+			<img src={url} alt={title} loading='lazy' />
 		</article>
 	);
 }

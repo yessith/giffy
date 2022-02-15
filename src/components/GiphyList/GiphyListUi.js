@@ -5,15 +5,23 @@ import { GiphyContext } from 'context/GiphyContext';
 
 // HOOKS
 import { useGetGiphy } from 'hooks/useGetGiphy';
-import { useGetLocation } from 'hooks/useGetLocation ';
 import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
 
 export function GiphyListUi(query) {
 	const { setPage } = useContext(GiphyContext);
 	const { loading, error } = useGetGiphy({ query });
-	const { currentLocation } = useGetLocation();
-	const path = currentLocation();
 	const externalRef = useRef();
+
+	const getCurrentLocation = useCallback(() => {
+		const location = window.location.pathname;
+		const currentLocation =
+			location === '/'
+				? '/'
+				: location.slice(1).toLocaleLowerCase().split('/')[1];
+		return currentLocation;
+	}, []);
+
+	const path = getCurrentLocation();
 
 	const { isNearScreen } = useIntersectionObserver({
 		externalRef: loading ? null : externalRef,

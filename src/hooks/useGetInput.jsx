@@ -3,7 +3,7 @@ import { useLocation } from 'wouter';
 
 export function useGetInput() {
 	const [query, setQuery] = useState('');
-	const [path, setLocation] = useLocation('');
+	const [setLocation] = useLocation('');
 	const inputRef = useRef('');
 
 	const onSubmitQuery = (event) => {
