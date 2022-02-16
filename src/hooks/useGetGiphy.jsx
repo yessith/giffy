@@ -2,8 +2,9 @@ import { useEffect, useContext, useState } from 'react';
 import { GiphyContext } from 'context/GiphyContext';
 
 // UTILS
-import { API_KEY } from 'utils/settings';
-import { API_URL } from 'utils/settings';
+import { API_URL, API_KEY } from 'utils/settings';
+
+// const API_KEY = process.env.API_KEY;
 
 export function useGetGiphy({ limit = 10, query }) {
 	const [error, setError] = useState(null);

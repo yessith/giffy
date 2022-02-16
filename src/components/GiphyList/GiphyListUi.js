@@ -8,20 +8,9 @@ import { useGetGiphy } from 'hooks/useGetGiphy';
 import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
 
 export function GiphyListUi(query) {
-	const { setPage } = useContext(GiphyContext);
+	const { setPage, path } = useContext(GiphyContext);
 	const { loading, error } = useGetGiphy({ query });
 	const externalRef = useRef();
-
-	const getCurrentLocation = useCallback(() => {
-		const location = window.location.pathname;
-		const currentLocation =
-			location === '/'
-				? '/'
-				: location.slice(1).toLocaleLowerCase().split('/')[1];
-		return currentLocation;
-	}, []);
-
-	const path = getCurrentLocation();
 
 	const { isNearScreen } = useIntersectionObserver({
 		externalRef: loading ? null : externalRef,
