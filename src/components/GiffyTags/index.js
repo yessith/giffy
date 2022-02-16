@@ -1,8 +1,8 @@
 import { Link } from 'wouter';
 import { useGetTrendingTags } from 'hooks/useGetTrendingTags';
-import './Category.css';
+import './GiffyTags.css';
 
-function Category() {
+function GiffyTags() {
 	const { trends } = useGetTrendingTags();
 
 	return (
@@ -15,4 +15,4 @@ function Category() {
 		</ul>
 	);
 }
-export { Category as default };
+export { GiffyTags as default };

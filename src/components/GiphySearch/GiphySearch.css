@@ -9,7 +9,7 @@
   width: 120px;
   position: relative;
   overflow: hidden;
-  background-color: var(--brand-color_2);
+  background-color: var(--theme--contrast-0);
   text-align: center;
   text-transform: uppercase;
   font-size: 1.6rem;
@@ -30,7 +30,7 @@
   -webkit-transform: translate(-50%, -50%) rotate(45deg);
   -ms-transform: translate(-50%, -50%) rotate(45deg);
   transform: translate(-50%, -50%) rotate(45deg);
-  background: #003049;
+  background: #9933ff;
   -webkit-transition: .5s ease;
   transition: .5s ease;
   display: block;

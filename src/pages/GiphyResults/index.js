@@ -14,7 +14,7 @@ export function GiphyResults({ children }) {
 				<title>{title} | Giffy</title>
 				<meta name='description' content={`Search results for ${title}`} />
 			</Helmet>
-			<main className='app-content'>{children}</main>
+			<main className='giffy-content'>{children}</main>
 		</>
 	);
 }

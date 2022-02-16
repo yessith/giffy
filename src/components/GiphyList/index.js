@@ -14,11 +14,11 @@ function GiphyList({ onLoading, onError, query, children }) {
 	console.log('GiphyList');
 
 	return (
-		<>
+		<section className='giffy-results'>
 			<h1>{title}</h1>
-			<section className='listGif'>{children()}</section>
-			<div ref={externalRef}>ref</div>
-		</>
+			<div className='listOfGif'>{children()}</div>
+			<div id='visoRef' ref={externalRef}></div>
+		</section>
 	);
 }
 

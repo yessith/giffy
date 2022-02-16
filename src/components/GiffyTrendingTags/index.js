@@ -1,17 +1,16 @@
 import { lazy, Suspense } from 'react';
 import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
+import Spinner from 'components/Spinner';
 // import { Category } from 'components/Category';
 
-export function LazyTrending() {
+export function GiffyTrendingTags() {
 	const { isNearScreen, fromRef } = useIntersectionObserver();
-	const Category = lazy(() => import('components/Category'));
+	const GiffyTags = lazy(() => import('components/GiffyTags'));
 
 	return (
 		<section className='trending-tags' ref={fromRef}>
 			<h2>Current Trending Tags</h2>
-			<Suspense fallback={<p>cargando...</p>}>
-				{isNearScreen ? <Category /> : null}
-			</Suspense>
+			<Suspense fallback={<Spinner />}>{isNearScreen ? <GiffyTags /> : null}</Suspense>
 		</section>
 	);
 }

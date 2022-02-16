@@ -1,9 +1,17 @@
-.listGif {
-  max-width: 1200px;
-  margin: 0 auto;
+.giffy-results {
+  padding: 0 1rem;
+}
+
+.giffy-results, .listOfGif {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.listOfGif {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 250px;
   gap: 1rem;
   align-items: center;
+  margin-top: 2rem;
 }

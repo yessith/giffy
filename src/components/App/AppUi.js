@@ -1,15 +1,13 @@
 import { Route } from 'wouter';
 
 // COMPONENTS
+import { Loading } from 'components/Loading';
+import { Error } from 'components/Error';
 import { Header } from 'components/Header';
 import { GiphySearch } from 'components/GiphySearch';
 import { GiphyMenu } from 'components/GiphyMenu';
 import GiphyList from 'components/GiphyList';
 import GiphyItem from 'components/GiphyItem';
-import { Footer } from 'components/Footer';
-import { Loading } from 'components/Loading';
-import { Error } from 'components/Error';
-import { LazyTrending } from 'components/LazyTrending';
 
 // PAGES
 import { Home } from 'pages/Home';
@@ -31,11 +29,7 @@ export function AppUi() {
 			<Route path='/search/:query'>
 				{({ query }) => (
 					<GiphyResults>
-						<GiphyList
-							onLoading={() => <Loading />}
-							onError={() => <Error />}
-							query={query}
-						>
+						<GiphyList onLoading={() => <Loading />} onError={() => <Error />} query={query}>
 							{() => <GiphyItem />}
 						</GiphyList>
 					</GiphyResults>
@@ -43,10 +37,6 @@ export function AppUi() {
 			</Route>
 
 			<Route component={GiphyDetails} path='/gif/:id' />
-
-			<Footer>
-				<LazyTrending />
-			</Footer>
 		</>
 	);
 }

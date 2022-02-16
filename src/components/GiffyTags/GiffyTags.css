@@ -1,0 +1,54 @@
+.trending-tags {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.trending-tags h2 {
+  font-size: 3rem;
+}
+
+.trending-list {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  overflow-x: scroll;
+}
+
+.trending-item {
+  flex-shrink: 0;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: #003049;
+  text-align: center;
+  padding: 0.3rem;
+}
+
+.trending-item a {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 900px) {
+  .trending-tags {
+    height: 100%;
+  }
+
+  .trending-list {
+    height: 100%;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    overflow-x: initial;
+  }
+
+  .trending-item {
+    flex-shrink: initial;
+  }
+}

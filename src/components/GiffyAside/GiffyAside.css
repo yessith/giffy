@@ -1,0 +1,16 @@
+.giffy-aside {
+  width: 100%;
+  height: 100px;
+  padding: 0 1rem;
+}
+
+@media only screen and (min-width: 900px) {
+  .giffy-aside {
+    width: 50%;
+    height: auto;
+    position: sticky;
+    top: 200px;
+    z-index: 1;
+    background-color: #01131a;
+  }
+}

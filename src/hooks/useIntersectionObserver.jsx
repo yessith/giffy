@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 
-export function useIntersectionObserver({ externalRef, once = true } = {}) {
+export function useIntersectionObserver({ distance = '100px', externalRef, once = true } = {}) {
 	const [isNearScreen, setIsNearScreen] = useState(false);
 	const fromRef = useRef(null);
 
 	useEffect(() => {
 		const element = externalRef ? externalRef.current : fromRef.current;
+		let observer;
 
 		function onIntersection(entries, observer) {
 			entries.forEach((entry) => {
@@ -22,14 +23,24 @@ export function useIntersectionObserver({ externalRef, once = true } = {}) {
 			});
 		}
 
-		const observer = new IntersectionObserver(onIntersection);
+		Promise.resolve(
+			typeof IntersectionObserver !== 'undefined'
+				? IntersectionObserver
+				: import('intersection-observer')
+		).then(() => {
+			observer = new IntersectionObserver(onIntersection, { rootMargin: distance });
 
-		if (element) {
-			observer.observe(element);
-		}
+			if (element) observer.observe(element);
+		});
 
-		return () => observer.disconnect();
-	}, [externalRef, once]);
+		// const observer = new IntersectionObserver(onIntersection);
+
+		// if (element) {
+		// 	observer.observe(element);
+		// }
+
+		return () => observer && observer.disconnect();
+	});
 
 	return { isNearScreen, fromRef };
 }
