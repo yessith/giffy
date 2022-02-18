@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 
 export function useGetInput() {
 	const [query, setQuery] = useState('');
+	// eslint-disable-next-line no-unused-vars
 	const [path, setLocation] = useLocation('');
 	const inputRef = useRef('');
 

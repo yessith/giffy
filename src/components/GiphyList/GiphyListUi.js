@@ -17,6 +17,7 @@ export function GiphyListUi(query) {
 		once: false,
 	});
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const HandleNextPage = useCallback(
 		// debounce(() => setPage((prevPage) => prevPage + 1), 500),
 		throttle(() => setPage((prevPage) => prevPage + 1), 1000, {

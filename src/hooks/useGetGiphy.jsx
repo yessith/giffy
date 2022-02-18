@@ -6,7 +6,7 @@ import { API_URL, API_KEY } from 'utils/settings';
 
 // const API_KEY = process.env.API_KEY;
 
-export function useGetGiphy({ limit = 10, query }) {
+export function useGetGiphy({ limit = 15, query }) {
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const { page, INITIAL_PAGE, setGifs } = useContext(GiphyContext);
@@ -36,6 +36,7 @@ export function useGetGiphy({ limit = 10, query }) {
 		};
 
 		searchGiphy();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [query]);
 
 	useEffect(() => {
@@ -55,6 +56,7 @@ export function useGetGiphy({ limit = 10, query }) {
 		};
 
 		searchGiphy();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [page]);
 
 	return { loading, error };
