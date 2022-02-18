@@ -6,7 +6,7 @@
 
 @media only screen and (min-width: 900px) {
   .giffy-aside {
-    width: 50%;
+    width: 30%;
     height: auto;
     position: sticky;
     top: 200px;
