@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { Loading } from 'components/Loading';
+import { Skeleton } from 'components/Skeleton';
 import { Error } from 'components/Error';
 import GiphyList from 'components/GiphyList';
 import GiphyItem from 'components/GiphyItem';
@@ -18,7 +18,7 @@ export function Home() {
 				<GiffyAside>
 					<GiffyTrendingTags />
 				</GiffyAside>
-				<GiphyList onLoading={() => <Loading />} onError={() => <Error />}>
+				<GiphyList onLoading={() => <Skeleton />} onError={() => <Error />}>
 					{() => <GiphyItem />}
 				</GiphyList>
 			</main>

@@ -26,7 +26,7 @@
   letter-spacing: normal;
   text-transform: capitalize;
   color: #fff;
-  background-color: #003049;
+  background-color: var(--theme--contrast-0);
   text-align: center;
   padding: 0.3rem;
 }

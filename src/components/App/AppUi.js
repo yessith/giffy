@@ -1,7 +1,7 @@
 import { Route } from 'wouter';
 
 // COMPONENTS
-import { Loading } from 'components/Loading';
+import { Skeleton } from 'components/Skeleton';
 import { Error } from 'components/Error';
 import { Header } from 'components/Header';
 import { GiphySearch } from 'components/GiphySearch';
@@ -29,7 +29,7 @@ export function AppUi() {
 			<Route path='/search/:query'>
 				{({ query }) => (
 					<GiphyResults>
-						<GiphyList onLoading={() => <Loading />} onError={() => <Error />} query={query}>
+						<GiphyList onLoading={() => <Skeleton />} onError={() => <Error />} query={query}>
 							{() => <GiphyItem />}
 						</GiphyList>
 					</GiphyResults>

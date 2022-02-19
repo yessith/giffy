@@ -2,6 +2,10 @@
   padding: 0 1rem;
 }
 
+.giffy-results h1 {
+  text-align: center;
+}
+
 .giffy-results, .listOfGif {
   min-height: 100vh;
   width: 100%;
