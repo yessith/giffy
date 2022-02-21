@@ -1,7 +1,7 @@
 import { Link } from 'wouter';
-import './GiphyMenu.css';
+import './GiffyMenu.css';
 
-export function GiphyMenu() {
+export function GiffyMenu() {
 	return (
 		<nav className='app-menu'>
 			<Link to='/'>

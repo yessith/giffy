@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { GiphyListUi } from './GiphyListUi';
+import { GiffyListUi } from './GiffyListUi';
 
-import './GiphyList.css';
+import './GiffyList.css';
 
-function GiphyList({ onLoading, onError, query, children }) {
-	const { path, externalRef, loading, error } = GiphyListUi(query);
+function GiffyList({ onLoading, onError, query, children }) {
+	const { path, externalRef, loading, error } = GiffyListUi(query);
 	const title = path === '/' ? `Today's trending list` : `Results for ${decodeURI(path)} `;
 
 	if (loading) return onLoading();
 	if (error) return onError();
 
-	console.log('GiphyList');
+	console.log('GiffyList');
 
 	return (
 		<section className='giffy-results'>
@@ -22,4 +22,4 @@ function GiphyList({ onLoading, onError, query, children }) {
 	);
 }
 
-export default React.memo(GiphyList);
+export default React.memo(GiffyList);

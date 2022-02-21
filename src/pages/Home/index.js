@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet';
 import { Skeleton } from 'components/Skeleton';
 import { Error } from 'components/Error';
-import GiphyList from 'components/GiphyList';
-import GiphyItem from 'components/GiphyItem';
+import GiffyList from 'components/GiffyList';
+import GiffyItem from 'components/GiffyItem';
 import { GiffyAside } from 'components/GiffyAside';
 import { GiffyTrendingTags } from 'components/GiffyTrendingTags';
 import './Home.css';
@@ -18,9 +18,9 @@ export function Home() {
 				<GiffyAside>
 					<GiffyTrendingTags />
 				</GiffyAside>
-				<GiphyList onLoading={() => <Skeleton />} onError={() => <Error />}>
-					{() => <GiphyItem />}
-				</GiphyList>
+				<GiffyList onLoading={() => <Skeleton />} onError={() => <Error />}>
+					{() => <GiffyItem />}
+				</GiffyList>
 			</main>
 		</>
 	);

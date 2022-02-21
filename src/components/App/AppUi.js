@@ -4,10 +4,10 @@ import { Route } from 'wouter';
 import { Skeleton } from 'components/Skeleton';
 import { Error } from 'components/Error';
 import { Header } from 'components/Header';
-import { GiphySearch } from 'components/GiphySearch';
-import { GiphyMenu } from 'components/GiphyMenu';
-import GiphyList from 'components/GiphyList';
-import GiphyItem from 'components/GiphyItem';
+import { GiffySearch } from 'components/GiffySearch';
+import { GiffyMenu } from 'components/GiffyMenu';
+import GiffyList from 'components/GiffyList';
+import GiffyItem from 'components/GiffyItem';
 
 // PAGES
 import { Home } from 'pages/Home';
@@ -20,8 +20,8 @@ export function AppUi() {
 	return (
 		<>
 			<Header>
-				<GiphyMenu />
-				<GiphySearch />
+				<GiffyMenu />
+				<GiffySearch />
 			</Header>
 
 			<Route component={Home} path='/' />
@@ -29,9 +29,9 @@ export function AppUi() {
 			<Route path='/search/:query'>
 				{({ query }) => (
 					<GiphyResults>
-						<GiphyList onLoading={() => <Skeleton />} onError={() => <Error />} query={query}>
-							{() => <GiphyItem />}
-						</GiphyList>
+						<GiffyList onLoading={() => <Skeleton />} onError={() => <Error />} query={query}>
+							{() => <GiffyItem />}
+						</GiffyList>
 					</GiphyResults>
 				)}
 			</Route>

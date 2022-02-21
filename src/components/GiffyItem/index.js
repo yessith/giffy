@@ -6,12 +6,12 @@ import { GiphyContext } from 'context/GiphyContext';
 // import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
 // import { useLazyImages } from 'hooks/useLazyImages';
 
-import './GiphyItem.css';
+import './GiffyItem.css';
 
-function GiphyItem() {
+function GiffyItem() {
 	const { gifs } = useContext(GiphyContext);
 	// const { fromRef } = useLazyImages();
-	console.log('GiphyItem');
+	console.log('GiffyItem');
 
 	return (
 		<>
@@ -32,4 +32,4 @@ function GiphyItem() {
 	);
 }
 
-export default React.memo(GiphyItem);
+export default React.memo(GiffyItem);

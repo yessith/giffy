@@ -1,7 +1,7 @@
 import { useGetInput } from 'hooks/useGetInput';
-import './GiphySearch.css';
+import './GiffySearch.css';
 
-export function GiphySearch() {
+export function GiffySearch() {
 	const { inputRef, onGetQuery, onSubmitQuery } = useGetInput();
 
 	return (

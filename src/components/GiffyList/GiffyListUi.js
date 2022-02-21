@@ -7,7 +7,7 @@ import { GiphyContext } from 'context/GiphyContext';
 import { useGetGiphy } from 'hooks/useGetGiphy';
 import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
 
-export function GiphyListUi(query) {
+export function GiffyListUi(query) {
 	const { setPage, path } = useContext(GiphyContext);
 	const { loading, error } = useGetGiphy({ query });
 	const externalRef = useRef();
