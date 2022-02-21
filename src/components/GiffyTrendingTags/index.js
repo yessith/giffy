@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
-import Spinner from 'components/Spinner';
-// import { Category } from 'components/Category';
+import { Spinner } from 'components/Spinner';
 
 export function GiffyTrendingTags() {
 	const { isNearScreen, fromRef } = useIntersectionObserver();
@@ -14,5 +13,3 @@ export function GiffyTrendingTags() {
 		</section>
 	);
 }
-
-// return <div ref={fromRef}>{isNearScreen ? onShowComponent() : null}</div>;

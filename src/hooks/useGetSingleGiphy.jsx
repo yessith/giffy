@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext, useState, useMemo } from 'react';
 import { GiphyContext } from 'context/GiphyContext';
 
 export function useGetSingleGiphy({ gifId }) {
@@ -6,12 +6,13 @@ export function useGetSingleGiphy({ gifId }) {
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const { gifs } = useContext(GiphyContext);
-	const singleGifCache = gifs.find(({ id }) => id === gifId);
+
+	const singleGifCache = useMemo(() => gifs.find(({ id }) => id === gifId), [gifId, gifs]);
 
 	useEffect(() => {
+		setLoading(true);
 		try {
 			if (!singleGifCache) {
-				setLoading(true);
 				const getLocalStorage = localStorage.getItem('lastGif');
 				const parseData = JSON.parse(getLocalStorage);
 				setGif(parseData);
@@ -23,6 +24,7 @@ export function useGetSingleGiphy({ gifId }) {
 				setGif(dataGif);
 				const stringDataGif = JSON.stringify(dataGif);
 				localStorage.setItem('lastGif', stringDataGif);
+				setLoading(false);
 			}
 		} catch (error) {
 			console.log('Ooops, error', error.message);

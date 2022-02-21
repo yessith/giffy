@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export function useLazyImages() {
 	const fromRef = useRef();
@@ -7,17 +7,15 @@ export function useLazyImages() {
 		const { current } = fromRef;
 
 		const showImage = (entry) => {
-			const container = entry.target;
-			const image = container.firstChild;
-			const url = image.dataset.src;
-			image.src = url;
-			observer.unobserve(container);
-			console.log(entry);
-			console.log(container);
+			const image = entry.target;
+			const imageSrc = image.getAttribute('data-src');
+			image.removeAttribute('data-src');
+			image.setAttribute('src', imageSrc);
+
+			observer.disconnect();
 		};
 
-		const isIntersecting = (intersectionEntry) =>
-			intersectionEntry.isIntersecting;
+		const isIntersecting = (entry) => entry.isIntersecting;
 
 		const observer = new IntersectionObserver((entries) => {
 			entries.filter(isIntersecting).forEach(showImage);
